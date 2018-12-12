@@ -13,3 +13,6 @@ the POM has the environment variable with the Kafka service name
 
 To POST message to topic :
 curl -X POST http://<route>/camel/lines -d 'myword2'
+  to GET from topic:
+  curl http://demo-word-count-rest-<rest of route>/camel/updates
+  curl http://demo-word-count-rest-<rest of route>/camel/word-count
