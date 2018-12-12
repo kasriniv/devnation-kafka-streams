@@ -8,3 +8,7 @@ that shows the word counts
 
 all 3 of them are just a mvn fabric8:deploy away
 the POM has the environment variable with the Kafka service name
+
+
+To POST message to topic :
+curl -X POST http://<route>/camel/lines -d 'myword2'
