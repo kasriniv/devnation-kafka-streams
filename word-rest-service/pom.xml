@@ -80,7 +80,7 @@
 				<configuration>
 					<resources>
 						<env>
-							<CAMEL_KAFKA_BOOTSTRAP_SERVERS>my-cluster-kafka-myproject.192.168.64.3.nip.io:9092</CAMEL_KAFKA_BOOTSTRAP_SERVERS>
+							<CAMEL_KAFKA_BOOTSTRAP_SERVERS>my-cluster-kafka-bootstrap.myproject.svc:9092</CAMEL_KAFKA_BOOTSTRAP_SERVERS>
 						</env>
 					</resources>
 				</configuration>
