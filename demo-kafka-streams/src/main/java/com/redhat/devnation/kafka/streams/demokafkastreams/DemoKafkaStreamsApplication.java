@@ -83,8 +83,8 @@ public class DemoKafkaStreamsApplication {
 				.count();
 
 		// Write the `KTable<String, Long>` to the output topic.
-		//ORIGINAL KStream<String, Long> wordCountsStream = wordCounts.toStream();
-		KStream<String, String> wordCountsStream = wordCounts.toStream();
+		 KStream<String, Long> wordCountsStream = wordCounts.toStream();
+		
 		//ORIGINAL wordCountsStream.to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
 	wordCountsStream.to("streams-wordcount-output2", Produced.with(Serdes.String(), Serdes.String()));
 		return wordCountsStream;
