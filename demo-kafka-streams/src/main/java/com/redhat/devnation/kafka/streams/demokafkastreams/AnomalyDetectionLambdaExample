@@ -141,7 +141,7 @@ public class AnomalyDetectionLambdaExample {
       .map((windowedUserId, count) -> new KeyValue<>(windowedUserId.toString(), count));
 
     // write to the result topic
-    anomalousUsersForConsole.to("AnomalousUsers", Produced.with(stringSerde, longSerde));
+    anomalousUsersForConsole.to("anomaloususers", Produced.with(stringSerde, longSerde));
 
     final KafkaStreams streams = new KafkaStreams(builder.build(), streamsConfiguration);
     // Always (and unconditionally) clean local state prior to starting the processing topology.
