@@ -113,7 +113,7 @@ public class AnomalyDetectionLambdaExample {
     // Read the source stream.  In this example, we ignore whatever is stored in the record key and
     // assume the record value contains the username (and each record would represent a single
     // click by the corresponding user).
-    final KStream<String, String> views = builder.stream("UserClicks");
+    final KStream<String, String> views = builder.stream("userclicks");
 
     final KTable<Windowed<String>, Long> anomalousUsers = views
       // map the user name as key, because the subsequent counting is performed based on the key
