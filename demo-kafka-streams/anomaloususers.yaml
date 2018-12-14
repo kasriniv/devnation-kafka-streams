@@ -3,7 +3,7 @@ kind: KafkaTopic
 metadata:
   name: anomaloususers
   labels:
-    strimzi.io/cluster: my-cluster-kafka
+    strimzi.io/cluster: my-cluster3-kafka
 spec:
   partitions: 2
   replicas: 1
