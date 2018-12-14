@@ -48,7 +48,7 @@ public class DemoKafkaStreamsApplication {
 		final KStream<String, String> textLines = builder.stream("streams-plaintext-input");
 
 		final Pattern pattern = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS);
-                /*
+             
 		final KTable<String, Long> wordCounts = textLines
 				// Split each text line, by whitespace, into words.  The text lines are the record
 				// values, i.e. we can ignore whatever data is in the record keys and thus invoke
@@ -63,25 +63,8 @@ public class DemoKafkaStreamsApplication {
 				// Note: no need to specify explicit serdes because the resulting key and value types match our default serde settings
 				.groupBy((key, word) -> word)
 				.count();
+	
 		
-		//end Kavitha trials
-		*/
-		final KTable<Windowed<String>, Long> wordCounts = textLines
-				// Split each text line, by whitespace, into words.  The text lines are the record
-				// values, i.e. we can ignore whatever data is in the record keys and thus invoke
-				// `flatMapValues()` instead of the more generic `flatMap()`.
-				.flatMapValues(value -> Arrays.asList(pattern.split(value.toLowerCase())))
-				// Count the occurrences of each word (record key).
-				//
-				// This will change the stream type from `KStream<String, String>` to `KTable<String, Long>`
-				// (word -> count).  In the `count` operation we must provide a name for the resulting KTable,
-				// which will be used to name e.g. its associated state store and changelog topic.
-				//
-				// Note: no need to specify explicit serdes because the resulting key and value types match our default serde settings
-				.groupByKey()
-			.windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1)))
-				.count();
-
 		// Write the `KTable<String, Long>` to the output topic.
 		 KStream<String, Long> wordCountsStream = wordCounts.toStream();
 		
