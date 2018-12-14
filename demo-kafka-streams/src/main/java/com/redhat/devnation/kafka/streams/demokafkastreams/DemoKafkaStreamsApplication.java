@@ -78,15 +78,15 @@ public class DemoKafkaStreamsApplication {
 				// which will be used to name e.g. its associated state store and changelog topic.
 				//
 				// Note: no need to specify explicit serdes because the resulting key and value types match our default serde settings
-				.groupBy((key, word) -> word)
+				.groupByKey()
 			.windowedBy(TimeWindows.of(TimeUnit.MINUTES.toMillis(1)))
 				.count();
 
 		// Write the `KTable<String, Long>` to the output topic.
 		 KStream<String, Long> wordCountsStream = wordCounts.toStream();
 		
-		//ORIGINAL wordCountsStream.to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
-	wordCountsStream.to("streams-wordcount-output2", Produced.with(Serdes.String(), Serdes.String()));
+		wordCountsStream.to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
+	
 		return wordCountsStream;
 	}
 
