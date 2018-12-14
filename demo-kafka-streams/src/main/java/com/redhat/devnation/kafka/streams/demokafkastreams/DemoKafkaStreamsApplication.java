@@ -63,7 +63,7 @@ public class DemoKafkaStreamsApplication {
 		
 		//end Kavitha trials
 		*/
-		final KTable<Windowed<String, Long> wordCounts = textLines
+		final KTable<Windowed<String>, Long> wordCounts = textLines
 				// Split each text line, by whitespace, into words.  The text lines are the record
 				// values, i.e. we can ignore whatever data is in the record keys and thus invoke
 				// `flatMapValues()` instead of the more generic `flatMap()`.
