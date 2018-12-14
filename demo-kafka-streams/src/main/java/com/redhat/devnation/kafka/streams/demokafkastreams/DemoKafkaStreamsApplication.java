@@ -18,6 +18,7 @@ import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.annotation.KafkaStreamsDefaultConfiguration;
 import org.apache.kafka.streams.kstream.TimeWindows;
 import org.apache.kafka.streams.kstream.Windowed;
+import java.util.concurrent.TimeUnit;
 
 import java.util.Arrays;
 import java.util.HashMap;
